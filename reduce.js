@@ -6,15 +6,8 @@
 
 
 // Summing an array of numbers:
-const nums = [0, 1, 2, 3, 4];
-let sum = nums.reduce((acc, curr) => {
-  console.log(
-    "Accumulator:", acc,
-    "Current value:", curr,
-    "Total:", acc + curr
-  );
-}, 0);
-console.log(sum);
+
+
 
 const teamMembers = [
   {
@@ -40,6 +33,19 @@ const teamMembers = [
 ];
 
 // Totaling a specific object property
-
+let totalExperience = teamMembers.reduce((acc, curr) => acc + curr.yrsExperience, 0);
+console.log(totalExperience);
 
 // Grouping by a property, and totaling it too
+
+let experienceByProffesion = teamMembers.reduce((acc, curr) => {
+  let key = curr.proffesion;
+  if (!acc[key]) {
+    acc[key] = curr.yrsExperience;
+  } else {
+    acc[key] += curr.yrsExperience;
+  }
+  return acc;
+}, {})
+
+console.log(experienceByProffesion);
